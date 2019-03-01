@@ -135,8 +135,8 @@ int main() {
 
         auto start = std::chrono::high_resolution_clock::now();
         solve(
-            fstream(string("in/") + file + string(".in"), ios::in), 
-            fstream(string("out/") + file + string(".out"), ios::out)
+            fstream(string("in/") + file, ios::in), 
+            fstream(string("out/") + file, ios::out)
         );
         auto finish = std::chrono::high_resolution_clock::now();
 
@@ -163,7 +163,7 @@ void solve(fstream in, fstream out) {
         Photo p{i, false, set<int>()};
         for (int j = 0; j < nt; j++) {
             string tt; in >> tt;
-            if (tagsmap.find(tt) == tagsmap.end()) {tagsmap[tt] = tagsmap.count();} 
+            if (tagsmap.count(tt) == 0) {tagsmap[tt] = tagsmap.size();} 
             p.tags.insert(tagsmap[tt]);
         }
         if (t == 'H') hp.push_back(p);
