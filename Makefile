@@ -1,8 +1,15 @@
-all: out
-	g++ a.cpp -O3 && ./a.exe
+EXE=solution.exe
+
+all: out compile run
 
 out:
 	mkdir out
 
-run: out
-	./a.exe
+compile: a.cpp 
+	g++ a.cpp -O3 -o $(EXE)
+
+run: out compile 
+	./$(EXE)
+
+clean:
+	rm $(EXE)
